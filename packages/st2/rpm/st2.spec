@@ -16,10 +16,10 @@ Epoch: %{epoch}
 
 Requires: openssl-devel, libffi-devel, git, pam, openssh-server, openssh-clients, bash, setup
 %if 0%{?rhel} == 8
-Requires: python38-devel
+Requires: python3.11-devel
 %endif
 %if 0%{?rhel} == 9
-Requires: python3-devel
+Requires: python3.11-devel
 %endif
 
 # EL8 requires a few python packages available within 'BUILDROOT' when outside venv
@@ -27,12 +27,12 @@ Requires: python3-devel
 # Reference https://fossies.org/linux/ansible/packaging/rpm/ansible.spec
 %if 0%{?rhel} == 8
 # Will use the python3 stdlib venv
-BuildRequires: python38-devel
-BuildRequires: python38-setuptools
+BuildRequires: python3.11-devel
+BuildRequires: python3.11-setuptools
 %endif
 %if 0%{?rhel} == 9
-BuildRequires: python3-devel
-BuildRequires: python3-setuptools
+BuildRequires: python3.11-devel
+BuildRequires: python3.11-setuptools
 %endif
 
 # Apply this to both RHEL 8 and RHEL 9
@@ -64,10 +64,9 @@ Conflicts: st2common
 %define worker_name st2actionrunner@
 
 # WORKAROUND: RockyLinux9 doesn't have a python virtualenv rpm so it's installed during build as a dependency with pip.
-%if 0%{?rhel} == 9
 %build
-  pip install virtualenv
-%endif
+  python3.11 -m ensurepip
+  python3.11 -m pip install virtualenv
 
 %install
   %default_install

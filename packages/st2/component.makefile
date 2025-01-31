@@ -23,12 +23,12 @@ ifeq ($(DEB_DISTRO),focal)
 	PYTHON_BINARY := /usr/bin/python3
 	PIP_BINARY := /usr/local/bin/pip3.8
 else ifeq ($(EL_VERSION),8)
-	PYTHON_BINARY := /usr/bin/python3.8
-	PIP_BINARY := /usr/local/bin/pip3.8
+	PYTHON_BINARY := /usr/bin/python3.11
+	PIP_BINARY := /usr/local/bin/pip3.11
 else
-	PYTHON_BINARY := /usr/bin/python3
-	PIP_BINARY := pip3
-	PYTHON_ALT_BINARY := python3
+	PYTHON_BINARY := /usr/bin/python3.11
+	PIP_BINARY := pip3.11
+	PYTHON_ALT_BINARY := python3.11
 endif
 
 # Moved from top of file to handle when only py2 or py3 available
