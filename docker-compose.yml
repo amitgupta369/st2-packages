@@ -142,7 +142,7 @@ services:
       - /sys/fs/cgroup:/sys/fs/cgroup
 
   rabbitmq:
-    image: rabbitmq:3.12-management
+    image: rabbitmq:4.0-management
     privileged: true
     hostname: rabbit
     ports:
@@ -150,11 +150,11 @@ services:
       - "5672:5672"
 
   mongodb:
-    image: mongo:4.4
+    image: mongo:8.0
     ports:
       - "27017:27017"
 
   redis:
-    image: redis:7.2.4
+    image: redis:7.4
     ports:
       - "6379:6379"
